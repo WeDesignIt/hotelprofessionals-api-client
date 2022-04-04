@@ -7,8 +7,13 @@ use WeDesignIt\HotelprofessionalsApiClient\Client;
 
 class ClientTest extends TestCase
 {
-    public function test_the_test_method()
+
+    public function test_request_get_method()
     {
-        $this->assertSame("bier", (new Client())->test());
+        // local token for development, so no this aint compromised data.
+        $testToken = "1|zQOYIq01m2A7u6iFEe5mFW7yNCEfATx0L3MkIRN2";
+
+        $resp = Client::init($testToken)->request('GET', 'authenticate');
+        dd($resp);
     }
 }
