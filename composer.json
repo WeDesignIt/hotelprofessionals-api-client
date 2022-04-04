@@ -1,0 +1,39 @@
+{
+  "name": "wedesignit/hotelprofessionals-api-client",
+  "description": "PHP Api wrapper for the Hotelprofessionals Api V1",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Bodhi Looij",
+      "email": "b.looij@wedesignit.nl"
+    },
+    {
+      "name": "Wedesignit dev",
+      "email": "dev@wedesignit.nl"
+    }
+  ],
+  "keywords": [
+    "Hotelprofessionals",
+    "api wrapper Hotelprofessionals",
+    "php client Hotelprofessionals"
+  ],
+  "require": {
+    "php": "^7.2",
+    "guzzlehttp/guzzle": "7",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "WeDesignIt\\HotelprofessionalsApiClient\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WeDesignIt\\HotelprofessionalsApiClient\\Test\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5"
+  }
+}
