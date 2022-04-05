@@ -26,9 +26,14 @@ class Client {
         return (new static($secret));
     }
 
+    public function client(): GuzzleClient
+    {
+        return $this->client;
+    }
+
     public function request(string $method, string $uri, array $options = [])
     {
-        $response = $this->client->request($method, $uri, $options);
+        $response = $this->client()->request($method, $uri, $options);
 
         $contents = $response->getBody()->getContents();
 
