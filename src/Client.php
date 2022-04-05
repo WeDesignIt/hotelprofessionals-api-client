@@ -3,12 +3,15 @@
 namespace WeDesignIt\HotelprofessionalsApiClient;
 
 use GuzzleHttp\Client as GuzzleClient;
+use WeDesignIt\HotelprofessionalsApiClient\Traits\FluentCaller;
 
 class Client {
 
-    protected string $baseUrl = "localhost:8892/api/v1";
+    use FluentCaller;
 
-    protected GuzzleClient $client;
+    protected string $baseUrl = "192.168.178.71:8892/api/v1";
+
+    private GuzzleClient $client;
 
     public function __construct(string $secret)
     {
@@ -21,22 +24,24 @@ class Client {
         ]);
     }
 
-    public static function init(string $secret): self
-    {
-        return (new static($secret));
-    }
-
     public function client(): GuzzleClient
     {
         return $this->client;
     }
 
-    public function request(string $method, string $uri, array $options = [])
+    public function request(string $method, string $uri, array $options = []): array
     {
         $response = $this->client()->request($method, $uri, $options);
 
         $contents = $response->getBody()->getContents();
 
-        return  json_decode($contents, true);
+        dd($contents);
+
+        return json_decode($contents, true);
+    }
+
+    public function get(string $uri, array $options = []): array
+    {
+        return $this->request('GET', $uri, $options);
     }
 }
