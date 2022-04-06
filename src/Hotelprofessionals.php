@@ -20,7 +20,7 @@ class Hotelprofessionals
         $this->client = $client;
     }
 
-    public function countries(): Country
+    public function country(): Country
     {
         return new Country($this->client, 'countries');
     }
