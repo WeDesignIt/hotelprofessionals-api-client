@@ -4,7 +4,7 @@ namespace WeDesignIt\HotelprofessionalsApiClient\Resources;
 
 use WeDesignIt\HotelprofessionalsApiClient\Traits\DefaultCrud;
 
-class Country extends Resource
+class Employer extends Resource
 {
     use DefaultCrud;
 }

@@ -6,13 +6,13 @@ use WeDesignIt\HotelprofessionalsApiClient\Client;
 
 abstract class Resource
 {
+    /** @var Client $client */
     protected Client $client;
 
     protected int $page = 1;
 
     protected int $perPage = 15;
 
-    // the uri of the resource.
     protected string $uri;
 
     public function __construct(Client $client, string $uri)
