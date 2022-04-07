@@ -31,7 +31,7 @@ abstract class Resource
         return $this->page;
     }
 
-    public function setPage(int $page): self
+    public function page(int $page): self
     {
         $this->page = $page;
 
