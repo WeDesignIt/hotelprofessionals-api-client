@@ -2,9 +2,9 @@
 
 namespace WeDesignIt\HotelprofessionalsApiClient\Resources;
 
-use WeDesignIt\HotelprofessionalsApiClient\Traits\DefaultCrud;
+use WeDesignIt\HotelprofessionalsApiClient\Traits\ViewResource;
 
 class Employer extends Resource
 {
-    use DefaultCrud;
+    use ViewResource;
 }

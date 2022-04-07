@@ -2,13 +2,14 @@
 
 namespace WeDesignIt\HotelprofessionalsApiClient\Resources;
 
-use WeDesignIt\HotelprofessionalsApiClient\Traits\DefaultCrud;
+use WeDesignIt\HotelprofessionalsApiClient\Traits\ManipulateResource;
+use WeDesignIt\HotelprofessionalsApiClient\Traits\ViewResource;
 
 class JobListing extends Resource
 {
-    use DefaultCrud;
+    use ViewResource, ManipulateResource;
 
-    public function publish($resource)
+    public function publish($resource): array
     {
         return $this->client->put($this->uri($resource));
     }

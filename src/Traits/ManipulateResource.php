@@ -2,17 +2,7 @@
 
 namespace WeDesignIt\HotelprofessionalsApiClient\Traits;
 
-trait DefaultCrud {
-
-    public function list(): array
-    {
-        return $this->client->get($this->uri(), ['query' => $this->getQuery()]);
-    }
-
-    public function show(int $resource): array
-    {
-        return $this->client->get($this->uri($resource));
-    }
+trait ManipulateResource {
 
     public function update(int $resource, array $attributes): array
     {
