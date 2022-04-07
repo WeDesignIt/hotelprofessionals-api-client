@@ -13,7 +13,7 @@ class Client {
 
     use FluentCaller;
 
-    protected string $baseUrl = "192.168.178.71:8892/api/v1/";
+    protected string $baseUrl = "https://hotelprofessionals.nl/api/v1/";
 
     private GuzzleClient $client;
 
@@ -37,6 +37,12 @@ class Client {
             ],
             'allow_redirects' => false
         ]);
+    }
+
+    public function setBaseUrl($string): self
+    {
+        $this->baseUrl = $string;
+        return $this;
     }
 
     public function client(): GuzzleClient
