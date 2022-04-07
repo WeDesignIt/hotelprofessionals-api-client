@@ -38,4 +38,31 @@ class ClientTest extends TestCase
         $this->expectException(RequestException::class);
         $clientMock->request('GET', '/');
     }
+
+    public function test_get_method_returns_array()
+    {
+        // Create a mock and queue two responses.
+        $mock = new MockHandler([
+            new Response(200, ['Context-Type' => 'application/json'], json_encode(['data' => [['id' => 16], ['id' => 12]]])),
+            new Response(401, ['Content-Type' => 'application/json'], json_encode(['message' => 'Unauthenticated']))
+        ]);
+
+        $handlerStack = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handlerStack]);
+
+        $clientMock = $this
+            ->getMockBuilder(HPClient::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['client'])
+            ->getMock();
+
+        $clientMock->method('client')->willReturn($client);
+
+        // assert OK
+        $this->assertSame(['data' => [['id' => 16], ['id' => 12]]], $clientMock->get('/'));
+
+        // second request should result in a unauth.
+        $this->expectException(RequestException::class);
+        $clientMock->get('/');
+    }
 }
