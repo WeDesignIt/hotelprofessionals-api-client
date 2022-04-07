@@ -20,6 +20,11 @@ class Hotelprofessionals
         $this->client = $client;
     }
 
+    public function authenticate(): array
+    {
+        return $this->client->get('authenticate');
+    }
+
     public function country(): Country
     {
         return new Country($this->client, 'countries');

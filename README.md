@@ -1,7 +1,7 @@
 # Hotelprofessionals PHP API Client
 
 ## Resources
-We highly encourage you to read the [API documentation](https://nieuw.hotelprofessionals.nl/api/documentation) before working with this API wrapper, the documentation will explain more about the endpoints and what is required to store a resource. 
+ 
 
 ## Requirements
 PHP 7.4 or higher.
@@ -21,7 +21,11 @@ $apiKey = "2|xyzthisapikeywontwork";
 // establish the connection
 $client = Client::init($apiKey);
 $hp = Hotelprofessionals::init($client);
+
+// quick check if everything is properly setup
+$hp->authenticate();
 ``` 
+
 
 ### Countries
 ```php
