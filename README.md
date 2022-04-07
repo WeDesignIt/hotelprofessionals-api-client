@@ -57,13 +57,21 @@ $hp->experience()->show(1449);
 ```php
 // list all job listings
 $hp->jobListing()->list();
+
 // get a specific job listing
 $attributes = $hp->jobListing()->show(10552);
 
-$attributes['name']['nl'] = 'New job listing name, in the nl lang';
 // update a job listing
+$attributes['name']['nl'] = 'New job listing name, in the nl lang';
 $updatedJobListing = $hp->jobListing()->update(10552, ['job_listings' => $attributes]);
+
 // publish a job listing
 $hp->jobListing()->publish(10552);
+
+// store a new job listing
+$newJobListingAttributes = $hp->jobListing()->store($attributes);
+
+// its also possible to delete a job listing
+$hp->jobListing()->delete($newJobListingAttributes['data']['id']);
 ```
 
