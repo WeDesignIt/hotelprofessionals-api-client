@@ -21,7 +21,11 @@ $apiKey = "2|xyzthisapikeywontwork";
 // establish the connection
 $client = Client::init($apiKey);
 $hp = Hotelprofessionals::init($client);
+
+// quick check if everything is properly setup
+$hp->authenticate();
 ``` 
+
 
 ### Countries
 ```php
