@@ -1,10 +1,15 @@
 # Hotelprofessionals PHP API Client
 
-### Requirements
+## Resources
+We highly encourage you to read the [API documentation](https://nieuw.hotelprofessionals.nl/api/documentation) before working with this API wrapper, the documentation will explain more about the endpoints and what is required to store a resource. 
+
+## Requirements
 PHP 7.4 or higher.
 
 ## Installation
-`compose require wedesignit/hotelprofessionals-api-client`
+```
+compose require wedesignit/hotelprofessionals-api-client
+```
 
 ## Usage
 ```php
@@ -17,9 +22,6 @@ $apiKey = "2|xyzthisapikeywontwork";
 $client = Client::init($apiKey);
 $hp = Hotelprofessionals::init($client);
 ``` 
-
-## Resources
-All endpoints are defined by resources, all available endpoints can be found at the official [API documentation](https://nieuw.hotelprofessionals.nl/api/documentation)
 
 ### Countries
 ```php
@@ -73,5 +75,12 @@ $newJobListingAttributes = $hp->jobListing()->store($attributes);
 
 // its also possible to delete a job listing
 $hp->jobListing()->delete($newJobListingAttributes['data']['id']);
+```
+
+### Pagination
+Every list method will return a paginated response, the page can be changed like so.
+```php
+// return page 3 of the department list.
+$hp->department()->page(3)->list();
 ```
 

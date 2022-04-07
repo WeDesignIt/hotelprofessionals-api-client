@@ -17,33 +17,30 @@ class Client {
 
     private GuzzleClient $client;
 
-    public function __construct(string $secret)
+    public function __construct(string $secret, string $baseUrl = "", bool $debugMode = false)
     {
-        $stack = new HandlerStack();
-        $stack->setHandler(new CurlHandler());
-
-        $middleware = Middleware::tap(function (Request $request) {
-             var_dump($request->getRequestTarget());
-        });
-
-        $stack->push($middleware);
-
-        $this->client = new GuzzleClient([
-            'base_uri' => $this->baseUrl,
-            'handler' => $stack,
+        $config = [
+            'base_uri' => $baseUrl ?? $this->baseUrl,
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => "Bearer {$secret}"
             ],
             'allow_redirects' => false
-        ]);
+        ];
+
+        if ($debugMode) {
+            $stack = new HandlerStack();
+            $stack->setHandler(new CurlHandler());
+            $middleware = Middleware::tap(function (Request $request) {
+                 var_dump($request->getRequestTarget());
+            });
+            $stack->push($middleware);
+            $config['handler'] = $stack;
+        }
+
+        $this->client = new GuzzleClient($config);
     }
 
-    public function setBaseUrl($string): self
-    {
-        $this->baseUrl = $string;
-        return $this;
-    }
 
     public function client(): GuzzleClient
     {
