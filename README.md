@@ -57,6 +57,42 @@ $hp->employer()->show(432);
 $hp->experience()->list();
 // get a specific experiences
 $hp->experience()->show(1449);
+````
+
+### Experiences
+```php
+// list all available experiences
+$hp->category()->list();
+// get a specific experiences
+$hp->category()->show(1449);
+```
+### Languages
+```php
+// list all available languages
+$hp->language()->list();
+// get a specific languages
+$hp->language()->show(1449);
+```
+### Education
+```php
+// list all available education
+$hp->education()->list();
+// get a specific education
+$hp->education()->show(1449);
+```
+### Employment types
+```php
+// list all available employment types
+$hp->employmentType()->list();
+// get a specific employment type
+$hp->employmentType()->show(1449);
+```
+### Function features
+```php
+// list all available function features
+$hp->functionFeature()->list();
+// get a specific function feature
+$hp->functionFeature()->show(1449);
 ```
 
 ### JobListings
