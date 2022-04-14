@@ -2,11 +2,16 @@
 
 namespace WeDesignIt\HotelprofessionalsApiClient;
 
+use WeDesignIt\HotelprofessionalsApiClient\Resources\Category;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Country;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Department;
+use WeDesignIt\HotelprofessionalsApiClient\Resources\Education;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Employer;
+use WeDesignIt\HotelprofessionalsApiClient\Resources\EmploymentType;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Experience;
+use WeDesignIt\HotelprofessionalsApiClient\Resources\FunctionFeature;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\JobListing;
+use WeDesignIt\HotelprofessionalsApiClient\Resources\Language;
 use WeDesignIt\HotelprofessionalsApiClient\Traits\FluentCaller;
 
 class Hotelprofessionals
@@ -50,4 +55,28 @@ class Hotelprofessionals
         return new JobListing($this->client, 'job-listings');
     }
 
+    public function category(): Category
+    {
+        return new Category($this->client, 'categories');
+    }
+
+    public function education(): Education
+    {
+        return new Education($this->client, 'education');
+    }
+
+    public function language(): Language
+    {
+        return new Language($this->client, 'languages');
+    }
+
+    public function employmentType(): EmploymentType
+    {
+        return new EmploymentType($this->client, 'employment-types');
+    }
+
+    public function functionFeature(): FunctionFeature
+    {
+        return new FunctionFeature($this->client, 'function-features');
+    }
 }
