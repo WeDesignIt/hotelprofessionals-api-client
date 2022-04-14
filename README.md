@@ -59,11 +59,11 @@ $hp->experience()->list();
 $hp->experience()->show(1449);
 ````
 
-### Experiences
+### Category
 ```php
-// list all available experiences
+// list all available categories
 $hp->category()->list();
-// get a specific experiences
+// get a specific category
 $hp->category()->show(1449);
 ```
 ### Languages
