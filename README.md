@@ -26,6 +26,9 @@ $hp = Hotelprofessionals::init($client);
 $hp->authenticate();
 ``` 
 
+###Read the docs
+We highly suggest you to read the official API docs, this will give you more information on what the API expects.
+This can be found at; 
 
 ### Countries
 ```php
@@ -93,6 +96,14 @@ $hp->employmentType()->show(1449);
 $hp->functionFeature()->list();
 // get a specific function feature
 $hp->functionFeature()->show(1449);
+```
+
+### Occupation
+```php
+// list all available occupations
+$hp->occupation()->list();
+// get a specific occupation
+$hp->occupation()->show(739);
 ```
 
 ### JobListings

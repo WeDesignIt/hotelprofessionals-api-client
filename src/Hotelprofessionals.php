@@ -12,6 +12,7 @@ use WeDesignIt\HotelprofessionalsApiClient\Resources\Experience;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\FunctionFeature;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\JobListing;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Language;
+use WeDesignIt\HotelprofessionalsApiClient\Resources\Occupation;
 use WeDesignIt\HotelprofessionalsApiClient\Traits\FluentCaller;
 
 class Hotelprofessionals
@@ -68,6 +69,11 @@ class Hotelprofessionals
     public function language(): Language
     {
         return new Language($this->client, 'languages');
+    }
+
+    public function occupation(): Occupation
+    {
+        return new Occupation($this->client, 'occupations');
     }
 
     public function employmentType(): EmploymentType
