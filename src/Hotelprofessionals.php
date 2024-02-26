@@ -2,7 +2,7 @@
 
 namespace WeDesignIt\HotelprofessionalsApiClient;
 
-use WeDesignIt\HotelprofessionalsApiClient\Resources\Category;
+use WeDesignIt\HotelprofessionalsApiClient\Resources\DepartmentCategory;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Country;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Department;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Education;
@@ -56,9 +56,9 @@ class Hotelprofessionals
         return new JobListing($this->client, 'job-listings');
     }
 
-    public function category(): Category
+    public function departmentCategory(): DepartmentCategory
     {
-        return new Category($this->client, 'categories');
+        return new DepartmentCategory($this->client, 'department-categories');
     }
 
     public function education(): Education

@@ -2,8 +2,8 @@
 
 namespace WeDesignIt\HotelprofessionalsApiClient\Traits;
 
-trait ManipulateResource {
-
+trait ManipulateResource
+{
     public function update(int $resource, array $attributes): array
     {
         return $this->client->put($this->uri($resource), ['form_params' => $attributes]);

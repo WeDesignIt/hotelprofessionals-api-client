@@ -2,8 +2,8 @@
 
 namespace WeDesignIt\HotelprofessionalsApiClient\Traits;
 
-trait ViewResource {
-
+trait ViewResource
+{
     public function list(): array
     {
         return $this->client->get($this->uri(), ['query' => $this->getQuery()]);

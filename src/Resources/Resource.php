@@ -38,22 +38,26 @@ abstract class Resource
         return $this;
     }
 
-    public function getPerPage(): int
-    {
-        return $this->perPage;
-    }
-
-    public function setPerPage(int $perPage): self
-    {
-        $this->perPage = $perPage;
-
-        return $this;
-    }
+    //public function getPerPage(): int
+    //{
+    //    return $this->perPage;
+    //}
+    //
+    //public function setPerPage(int $perPage): self
+    //{
+    //    $this->perPage = $perPage;
+    //
+    //    return $this;
+    //}
 
     protected function getQuery(): array
     {
         $query['page'] = $this->getPage();
-        $query['per_page'] = $this->getPerPage();
+        //$query['per_page'] = $this->getPerPage();
+
+        if (method_exists(static::class, 'getFilters')) {
+            $query['filters'] = $this->getFilters();
+        }
 
         return $query;
     }

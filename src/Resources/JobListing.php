@@ -2,12 +2,15 @@
 
 namespace WeDesignIt\HotelprofessionalsApiClient\Resources;
 
+use WeDesignIt\HotelprofessionalsApiClient\Traits\FiltersResource;
 use WeDesignIt\HotelprofessionalsApiClient\Traits\ManipulateResource;
 use WeDesignIt\HotelprofessionalsApiClient\Traits\ViewResource;
 
 class JobListing extends Resource
 {
-    use ViewResource, ManipulateResource;
+    use ViewResource,
+        FiltersResource,
+        ManipulateResource;
 
     public function publish($resource): array
     {

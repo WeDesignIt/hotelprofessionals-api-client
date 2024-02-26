@@ -4,7 +4,7 @@ namespace WeDesignIt\HotelprofessionalsApiClient\Resources;
 
 use WeDesignIt\HotelprofessionalsApiClient\Traits\ViewResource;
 
-class Category extends Resource
+class DepartmentCategory extends Resource
 {
     use ViewResource;
 }

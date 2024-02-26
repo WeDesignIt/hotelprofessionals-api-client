@@ -42,12 +42,12 @@ This can be found at:
 ## Resources
 There's lots of resources available to fetch data from Hotelprofessionals directly.
 
-### Countries
+### Department categories
 ```php
-// list all available countries
-$hp->country()->list();
-// get a specific country
-$hp->country()->show(149);
+// list all available department categories
+$hp->departmentCategory()->list();
+// get a specific department category
+$hp->departmentCategory()->show(1449);
 ```
 
 ### Departments
@@ -58,12 +58,12 @@ $hp->department()->list();
 $hp->department()->show(56);
 ```
 
-### Employers
+### Occupation
 ```php
-// list all available Employers
-$hp->employer()->list();
-// get a specific Employer
-$hp->employer()->show(432);
+// list all available occupations
+$hp->occupation()->list();
+// get a specific occupation
+$hp->occupation()->show(739);
 ```
 
 ### Experiences
@@ -74,13 +74,6 @@ $hp->experience()->list();
 $hp->experience()->show(1449);
 ````
 
-### Category
-```php
-// list all available categories
-$hp->category()->list();
-// get a specific category
-$hp->category()->show(1449);
-```
 ### Languages
 ```php
 // list all available languages
@@ -88,7 +81,7 @@ $hp->language()->list();
 // get a specific languages
 $hp->language()->show(1449);
 ```
-### Education
+### Educations
 ```php
 // list all available education
 $hp->education()->list();
@@ -110,24 +103,35 @@ $hp->functionFeature()->list();
 $hp->functionFeature()->show(1449);
 ```
 
-### Occupation
+### Countries
 ```php
-// list all available occupations
-$hp->occupation()->list();
-// get a specific occupation
-$hp->occupation()->show(739);
+// list all available countries
+$hp->country()->list();
+// get a specific country
+$hp->country()->show(149);
+```
+
+### Employers
+Note: only a parent account (which can have sub accounts) can access this endpoint. This endpoint lists all sub 
+accounts for the employer associated with the used API key.
+
+```php
+// list all available Employers
+$hp->employer()->list();
+// get a specific Employer
+$hp->employer()->show(432);
 ```
 
 ### JobListings
 ```php
-// list all job listings
+// list all job listings (including for sub account(s) if current account is a parent)
 $hp->jobListing()->list();
 
 // get a specific job listing
 $attributes = $hp->jobListing()->show(10552);
 
 // update a job listing
-$attributes['name']['nl'] = 'New job listing name, in the nl lang';
+$attributes['title']['en'] = 'New job listing title, in the English locale';
 $updatedJobListing = $hp->jobListing()->update(10552, ['job_listings' => $attributes]);
 
 // publish a job listing
@@ -147,3 +151,39 @@ Every list method will return a paginated response, the page can be changed by u
 $hp->department()->page(3)->list();
 ```
 
+### Filtering
+Some endpoints support filtering. Be sure to read the documentation to know which endpoints support which filters.
+The documentation will also state which column(s) and which delimiter(s) are supported. Note that if a delimiter 
+isn't supported, the default will be used.
+
+The structure for filters is as follows:
+
+```php
+// Main array holds sub-arrays:
+$filters = [
+    [
+        // The column to filter on. Required.
+        'column' => $columnToFilter, 
+        // The value to apply. Required.
+        'value' => $valueToFilter,
+        // The delimiter for filtering. Optional, defaults to '='.
+        'delimiter' => '=',  
+    ],
+];
+ ```
+
+Filters can be applied like so:
+
+```php
+$filters = [
+    [
+        'column' => 'status',
+        'value' => 'published',
+        'delimiter' => '=',
+    ],
+];
+
+$hp->jobListing()->filter($filters)->list();
+```
+
+Note that duplicate filters _will_ be processed and might caught unexpected results.
