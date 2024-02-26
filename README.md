@@ -1,8 +1,5 @@
 # Hotelprofessionals PHP API Client
 
-## Resources
- 
-
 ## Requirements
 PHP 7.4 or higher.
 
@@ -16,19 +13,34 @@ compose require wedesignit/hotelprofessionals-api-client
 use WeDesignIt\HotelprofessionalsApiClient\Client;
 use WeDesignIt\HotelprofessionalsApiClient\Hotelprofessionals;
 
-// can be obtained through HP
+// Can be obtained through HP.
 $apiKey = "2|xyzthisapikeywontwork";
-// establish the connection
+// Establish the connection.
 $client = Client::init($apiKey);
 $hp = Hotelprofessionals::init($client);
 
-// quick check if everything is properly setup
+// Quick check if everything is properly setup.
 $hp->authenticate();
 ``` 
 
-###Read the docs
+### Custom URL
+In case you want to use a custom URL (e.g. to target a testing environment), you can pass the base URL for the API 
+as second parameter to the client:
+
+```php
+$client = Client::init($apiKey, 'https://integratie.hotelprofessionals.nl/api/v1/')
+```
+
+> [!CAUTION]
+> It is important to end the base URL with a forward slash (`/`), otherwise you may receive weird results.
+
+### Read the docs
 We highly suggest you to read the official API docs, this will give you more information on what the API expects.
-This can be found at; 
+This can be found at:
+[https://www.hotelprofessionals.nl/api/documentation](https://www.hotelprofessionals.nl/api/documentation).
+
+## Resources
+There's lots of resources available to fetch data from Hotelprofessionals directly.
 
 ### Countries
 ```php
@@ -129,7 +141,7 @@ $hp->jobListing()->delete($newJobListingAttributes['data']['id']);
 ```
 
 ### Pagination
-Every list method will return a paginated response, the page can be changed like so.
+Every list method will return a paginated response, the page can be changed by using the `page` method:
 ```php
 // return page 3 of the department list.
 $hp->department()->page(3)->list();

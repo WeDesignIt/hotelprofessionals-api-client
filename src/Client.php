@@ -9,18 +9,22 @@ use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 use WeDesignIt\HotelprofessionalsApiClient\Traits\FluentCaller;
 
-class Client {
-
+class Client
+{
     use FluentCaller;
 
     protected string $baseUrl = "https://hotelprofessionals.nl/api/v1/";
 
     private GuzzleClient $client;
 
-    public function __construct(string $secret, string $baseUrl = "", bool $debugMode = false)
+    public function __construct(string $secret, string $baseUrl = '', bool $debugMode = false)
     {
+        if (empty($baseUrl)) {
+            $baseUrl = $this->baseUrl;
+        }
+
         $config = [
-            'base_uri' => $baseUrl ?? $this->baseUrl,
+            'base_uri' => $baseUrl,
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => "Bearer {$secret}"
@@ -40,7 +44,6 @@ class Client {
 
         $this->client = new GuzzleClient($config);
     }
-
 
     public function client(): GuzzleClient
     {
