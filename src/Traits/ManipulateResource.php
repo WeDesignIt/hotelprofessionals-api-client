@@ -11,7 +11,7 @@ trait ManipulateResource
 
     public function delete(int $resource): array
     {
-        return $this->client->put($this->uri($resource));
+        return $this->client->delete($this->uri($resource));
     }
 
     public function store(array $attributes): array

@@ -12,8 +12,8 @@ class JobListing extends Resource
         FiltersResource,
         ManipulateResource;
 
-    public function publish($resource): array
+    public function publish(int $resource): array
     {
-        return $this->client->put($this->uri($resource));
+        return $this->client->put($this->uri($resource) . '/set-published');
     }
 }

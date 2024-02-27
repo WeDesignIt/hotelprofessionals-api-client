@@ -128,20 +128,29 @@ $hp->employer()->show(432);
 $hp->jobListing()->list();
 
 // get a specific job listing
-$attributes = $hp->jobListing()->show(10552);
+$jobListingResource = $hp->jobListing()->show(10552);
+
+// store a job listing (see documentation for full structure)
+$attributes = [
+    'job_listings' => [
+        'title' => [
+            'nl' => 'Nieuwe vacature', 
+            'en' => 'New job listing', 
+        ]    
+    ],
+];
+$newJobListingResource = $hp->jobListing()->store($attributes);
+$newId = $newJobListingResource['data']['id'];
 
 // update a job listing
 $attributes['title']['en'] = 'New job listing title, in the English locale';
-$updatedJobListing = $hp->jobListing()->update(10552, ['job_listings' => $attributes]);
+$updatedJobListingResource = $hp->jobListing()->update($newId, $attributes);
 
-// publish a job listing
+// publish a job listing (if not already published)
 $hp->jobListing()->publish(10552);
 
-// store a new job listing
-$newJobListingAttributes = $hp->jobListing()->store($attributes);
-
-// its also possible to delete a job listing
-$hp->jobListing()->delete($newJobListingAttributes['data']['id']);
+// delete a job listing (generally not recommended)
+$hp->jobListing()->delete($newId);
 ```
 
 ### Pagination
