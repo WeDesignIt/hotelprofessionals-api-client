@@ -63,7 +63,7 @@ class Hotelprofessionals
 
     public function education(): Education
     {
-        return new Education($this->client, 'education');
+        return new Education($this->client, 'educations');
     }
 
     public function language(): Language
