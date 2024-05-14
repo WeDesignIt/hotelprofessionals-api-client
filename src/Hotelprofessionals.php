@@ -10,6 +10,7 @@ use WeDesignIt\HotelprofessionalsApiClient\Resources\Employer;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\EmploymentType;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Experience;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\FunctionFeature;
+use WeDesignIt\HotelprofessionalsApiClient\Resources\InternshipType;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\JobListing;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Language;
 use WeDesignIt\HotelprofessionalsApiClient\Resources\Occupation;
@@ -84,5 +85,10 @@ class Hotelprofessionals
     public function functionFeature(): FunctionFeature
     {
         return new FunctionFeature($this->client, 'function-features');
+    }
+
+    public function internshipType(): InternshipType
+    {
+        return new InternshipType($this->client, 'internship-types');
     }
 }
