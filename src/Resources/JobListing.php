@@ -16,4 +16,9 @@ class JobListing extends Resource
     {
         return $this->client->put($this->uri($resource) . '/set-published');
     }
+Add
+    public function refresh(int $resource): array
+    {
+        return $this->client->put($this->uri($resource) . '/refresh');
+    }
 }
