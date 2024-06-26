@@ -37,7 +37,7 @@ class Client
             'allow_redirects' => false
         ];
 
-        if (($properties['debugMode' ?? false])) {
+        if (($properties['debugMode'] ?? false)) {
             $stack = new HandlerStack();
             $stack->setHandler(new CurlHandler());
             $middleware = Middleware::tap(function (Request $request) {
