@@ -1,4 +1,11 @@
+# Project files
+.env
+.env.testing
+composer.lock
+composer.phar
 /vendor
+.phpunit.result.cache
+
 # IntelliJ project files
 *.iml
 *.iws
@@ -21,9 +28,3 @@ nb-configuration.xml
 
 # OS
 .DS_Store
-
-# Project files
-.env
-.env.testing
-composer.lock
-composer.phar
