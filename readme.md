@@ -1,7 +1,13 @@
 # Hotelprofessionals PHP API Client
 
-## Requirements
-PHP 7.4 or higher.
+## Version Information
+
+To keep versioning simple, the package version is aligned with the Hotelprofessionals API version.
+
+| Package version | API Version | Status                  | PHP Version |
+|:----------------|:------------|:------------------------|:------------|
+| 1.1.x           | 1.x.x       | Active support :rocket: | ^8.1        |
+| 1.0.x           | 1.x.x       | No active support :x:   | \>=7.4.0    |
 
 ## Installation
 
