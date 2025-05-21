@@ -34,6 +34,7 @@ class HotelprofessionalsTest extends TestCase
                 ],
             ]
         ];
+
         // Create a mock and queue two responses.
         $mock = new MockHandler([
             new Response(200, ['Context-Type' => 'application/json'], json_encode($mockResponseData)),
@@ -53,6 +54,5 @@ class HotelprofessionalsTest extends TestCase
         $countriesList = Hotelprofessionals::init($clientMock)->country()->list();
 
         $this->assertSame($mockResponseData, $countriesList);
-
     }
 }
